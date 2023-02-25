@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './ContactForm.module.css';
 
-class ContactForm extends Component {
+ class ContactForm extends Component {
   state = {
     name: '',
     number: '',
@@ -11,16 +11,16 @@ class ContactForm extends Component {
   handleChange = event => {
     const { name, value } = event.currentTarget;
     this.setState({ [name]: value });
-    };
-    
-    handleSubmit = event => {
-        event.preventDefault();
-        this.props.onSubmit(this.state);
-        this.setState({
-            name: '',
-            number: '',
-        })
-    }
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    this.props.onSubmit(this.state);
+    this.setState({
+      name: '',
+      number: '',
+    });
+  };
 
   render() {
     const { name, number } = this.state;
@@ -54,13 +54,10 @@ class ContactForm extends Component {
   }
 }
 
+ContactForm.prototypes = {
+  name: PropTypes.string.isRequired,
+  number: PropTypes.number.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
 
-ContactForm.propTypes = {
-    name: PropTypes.string.isRequired,
-    number: PropTypes.number.isRequired,
-    onSubmit: PropTypes.func.isRequired,
-}
-
-
-
-export default ContactForm;
+export default ContactForm
